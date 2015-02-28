@@ -337,7 +337,7 @@ class WumpusDriver
   }
   
   public void gameOver(String reason)
-    throws InterruptedException
+    throws IOException, InterruptedException
   {
     
     String ans;
