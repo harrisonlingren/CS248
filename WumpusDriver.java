@@ -42,7 +42,7 @@ class WumpusDriver
 		// spidRoom2=generate.nextInt(caveStructure.length)+1;
 		
 		int[] roomAssign = new int[caveStructure.length];
-		for(int i=0; i<caveStructure.length-1; i++)
+		for(int i=0; i<caveStructure.length; i++)
       {
         roomAssign[i]=i+2;
         System.out.print(i+"="+roomAssign[i]+", ");
@@ -50,13 +50,13 @@ class WumpusDriver
     System.out.println();
 		roomAssign=RandomizeArray(roomAssign);
 		
-		wumpRoom=roomAssign[1];
-    pitRoom1=roomAssign[2];
-    pitRoom2=roomAssign[3];
-    spidRoom1=roomAssign[4];
-    spidRoom2=roomAssign[5];
-    batsRoom=roomAssign[6];
-    supplyRoom=roomAssign[7];
+		wumpRoom=roomAssign[0];
+    pitRoom1=roomAssign[1];
+    pitRoom2=roomAssign[2];
+    spidRoom1=roomAssign[3];
+    spidRoom2=roomAssign[4];
+    batsRoom=roomAssign[5];
+    supplyRoom=roomAssign[6];
 	}
   
   // shuffle
@@ -77,7 +77,7 @@ class WumpusDriver
   public static int[] RandomizeArray(int[] array){
     Random rgen = new Random();  // Random number generator      
  
-    for (int i=0; i<array.length-1; i++) 
+    for (int i=0; i<array.length; i++) 
     {
         int randomPosition = rgen.nextInt(array.length-2);
         int temp = array[i];
@@ -102,7 +102,7 @@ class WumpusDriver
      
 	  //prints ASCII title
 	
-	
+	/*
   	System.out.print("Welcome to");
   	Thread.sleep(250);
   	System.out.print(".");
@@ -125,7 +125,7 @@ class WumpusDriver
   	Thread.sleep(50);
   	System.out.println("                                                                   |_|               ");
   	Thread.sleep(250);
-		
+		*/
     startTurn(currentRoom, caveStructure);
     
   }
