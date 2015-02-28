@@ -167,13 +167,20 @@ class WumpusDriver
     // for debugging
     System.out.println( "wumpus:"+wumpRoom+wumpCheck(r)+" pits:"+pitRoom1+","+pitRoom2+":"+pitCheck(r)+" spider:"+spidRoom1+","+spidRoom2+":"+spiderCheck(r)+" bats:"+batsRoom+":"+batsCheck(r)+" supply:"+supplyRoom+":"+supplyCheck(r) );
 		
-  
+    // check for bats, spiders, pits, and the wumpus to print warnings
 		if(wumpCheck(cave[r-1].adj1) || wumpCheck(cave[r-1].adj2) || wumpCheck(cave[r-1].adj3) )
 		  { System.out.println("You smell some nasty Wumpus!"); }
+		
+		if(spiderCheck(cave[r-1].adj1) || spiderCheck(cave[r-1].adj2) || spiderCheck(cave[r-1].adj3) )
+      { System.out.println("You hear a faint clicking noise."); }
+    
+    if(pitCheck(cave[r-1].adj1) || pitCheck(cave[r-1].adj2) || pitCheck(cave[r-1].adj3) )
+      { System.out.println("You smell a dank odor."); }
+    
+    if(batsCheck(cave[r-1].adj1) || batsCheck(cave[r-1].adj2) || batsCheck(cave[r-1].adj3) )
+      { System.out.println("You hear squeaks around the corner..."); }
 		  
-		
-		
-  	//prompt for action
+		//prompt for action
   	System.out.println();
   	System.out.println("(M)ove or (S)hoot?");
   	System.out.print(":");
