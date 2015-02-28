@@ -15,6 +15,7 @@ class WumpusDriver
   int spidRoom2;
   int batsRoom;
   int supplyRoom;
+  boolean hasUsedSupply=false;
   
   Scanner input = new Scanner(System.in);
 	
@@ -230,9 +231,6 @@ class WumpusDriver
     currentRoom=r;
     
     //check for supplyRoom
-    
-    boolean hasUsedSupply;
-    
     if(supplyCheck(r))
     {
       if(hasUsedSupply==false)
