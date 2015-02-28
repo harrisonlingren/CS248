@@ -48,7 +48,7 @@ class WumpusDriver
         System.out.print(i+"="+roomAssign[i]+", ");
       }
     System.out.println();
-		roomAssign=RandomizeArray(roomAssign);
+		roomAssign=shuffleArray(roomAssign);
 		
 		wumpRoom=roomAssign[0];
     pitRoom1=roomAssign[1];
@@ -58,23 +58,8 @@ class WumpusDriver
     batsRoom=roomAssign[5];
     supplyRoom=roomAssign[6];
 	}
-  
-  // shuffle
-  /*static void shuffleArray(int[] array)
-  {
-    Random rand = new Random();
-    for (int i=array.length-1; i>0; i--)
-    {
-      int index=rand.nextInt(i);
-      // swap
-      int a=array[index];
-      array[index]=array[i];
-      array[i]=a;
-      System.out.print(i+"="+array[i]+", ");
-    }
-  }*/
-  
-  public static int[] RandomizeArray(int[] array){
+
+  public static int[] shuffleArray(int[] array){
     Random rgen = new Random();  // Random number generator      
  
     for (int i=0; i<array.length-1; i++) 
@@ -154,7 +139,7 @@ class WumpusDriver
 	  else {return false;}
 	}
 	
-	public boolean batCheck(int r)
+	public boolean batsCheck(int r)
 	{
 	  if(r==batsRoom) {return true;}
 	  else {return false;}
@@ -180,7 +165,7 @@ class WumpusDriver
     // print the adjacent rooms
     System.out.println("There are tunnels to rooms "+cave[r-1].adj1+", "+cave[r-1].adj2+", and "+cave[r-1].adj3);
     // for debugging
-    System.out.println( "wumpus:"+wumpRoom+wumpCheck(r)+" pits:"+pitRoom1+","+pitRoom2+":"+pitCheck(r)+" spider:"+spidRoom1+","+spidRoom2+":"+spiderCheck(r)+" bats:"+batsRoom+":"+batCheck(r)+" supply:"+supplyRoom+":"+supplyCheck(r) );
+    System.out.println( "wumpus:"+wumpRoom+wumpCheck(r)+" pits:"+pitRoom1+","+pitRoom2+":"+pitCheck(r)+" spider:"+spidRoom1+","+spidRoom2+":"+spiderCheck(r)+" bats:"+batsRoom+":"+batsCheck(r)+" supply:"+supplyRoom+":"+supplyCheck(r) );
 		
   
 		if(wumpCheck(cave[r-1].adj1) || wumpCheck(cave[r-1].adj2) || wumpCheck(cave[r-1].adj3) )
@@ -236,6 +221,12 @@ class WumpusDriver
     System.out.println("Moving to room "+ansNum+"...");
     Thread.sleep(500);
     currentRoom=r;
+    
+    //check for supplyRoom
+    if(supplyCheck(r))
+    {
+      arrowCount=3;
+    }
     
     // check for bats, pits, or wumpus
     if (wumpCheck(r) )
@@ -339,7 +330,6 @@ class WumpusDriver
   public void gameOver(String reason)
     throws IOException, InterruptedException
   {
-    
     String ans;
     
     System.out.println("Oh no!");
@@ -349,9 +339,6 @@ class WumpusDriver
     System.out.println("Do you want to play again? (y/n)");
     System.out.print(":");
     ans=input.next();
-    
     if(ans.equals("y") ) {startGame();}
-    
   }
-
 }
