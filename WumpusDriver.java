@@ -157,7 +157,7 @@ class WumpusDriver
     // print the room scenario
     System.out.println(cave[r-1].scenario);
     // print the adjacent rooms
-    System.out.println("There are tunnels to rooms "+cave[r-1].adj1+", "+cave[r-1].adj2+", and "+cave[r-1].adj3);
+    System.out.println("There are tunnels to rooms "+cave[r-1].adj1+", "+cave[r-1].adj2+", and "+cave[r-1].adj3+".");
     // for debugging
     // System.out.println( "wumpus:"+wumpRoom+wumpCheck(r)+" pits:"+pitRoom1+","+pitRoom2+":"+pitCheck(r)+" spider:"+spidRoom1+","+spidRoom2+":"+spiderCheck(r)+" bats:"+batsRoom+":"+batsCheck(r)+" supply:"+supplyRoom+":"+supplyCheck(r) );
 		
