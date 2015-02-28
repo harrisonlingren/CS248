@@ -42,7 +42,7 @@ class WumpusDriver
 		// spidRoom2=generate.nextInt(caveStructure.length)+1;
 		
 		int[] roomAssign = new int[caveStructure.length];
-		for(int i=0; i<caveStructure.length; i++)
+		for(int i=0; i<caveStructure.length-1; i++)
       {
         roomAssign[i]=i+2;
         System.out.print(i+"="+roomAssign[i]+", ");
@@ -77,7 +77,7 @@ class WumpusDriver
   public static int[] RandomizeArray(int[] array){
     Random rgen = new Random();  // Random number generator      
  
-    for (int i=0; i<array.length; i++) 
+    for (int i=0; i<array.length-1; i++) 
     {
         int randomPosition = rgen.nextInt(array.length-2);
         int temp = array[i];
