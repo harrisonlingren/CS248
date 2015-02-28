@@ -340,6 +340,8 @@ class WumpusDriver
     throws InterruptedException
   {
     
+    String ans;
+    
     System.out.println("Oh no!");
     System.out.println(reason);
     Thread.sleep(1000);
