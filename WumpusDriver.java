@@ -33,20 +33,13 @@ class WumpusDriver
     for(int i=0; i<caveStructure.length; i++)
 			caveStructure[i]=new Room(caveScan);
 			
-		// generate random numbers to assign the wumpus, 2 pits,
-		// and 2 spiders into rooms
-		
-		// wumpRoom=generate.nextInt(caveStructure.length)+1;
-		// pitRoom1=generate.nextInt(caveStructure.length)+1;
-		// pitRoom2=generate.nextInt(caveStructure.length)+1;
-		// spidRoom1=generate.nextInt(caveStructure.length)+1;
-		// spidRoom2=generate.nextInt(caveStructure.length)+1;
-		
+		// generate random numbers to assign the wumpus, 2 pits, 2 spiders, bats, and supply room
 		int[] roomAssign = new int[caveStructure.length];
 		for(int i=0; i<caveStructure.length-1; i++)
       {
         roomAssign[i]=i+2;
-        System.out.print(i+"="+roomAssign[i]+", ");
+        // for debugging, prints intial roomAssign
+        // System.out.print(i+"="+roomAssign[i]+", ");
       }
     System.out.println();
 		roomAssign=shuffleArray(roomAssign);
@@ -71,10 +64,13 @@ class WumpusDriver
         array[randomPosition] = temp;
     }
     
+    // for debugging, prints shuffled roomAssign
+    /*
     for(int i=0; i<array.length; i++)
     {
       System.out.print(i+"="+array[i]+", ");
     }
+    */
     
     return array;
   }
@@ -87,8 +83,6 @@ class WumpusDriver
     currentRoom=1;
      
 	  //prints ASCII title
-	
-	/*
   	System.out.print("Welcome to");
   	Thread.sleep(250);
   	System.out.print(".");
@@ -111,7 +105,6 @@ class WumpusDriver
   	Thread.sleep(50);
   	System.out.println("                                                                   |_|               ");
   	Thread.sleep(250);
-		*/
     startTurn(currentRoom, caveStructure);
     
   }
@@ -166,7 +159,7 @@ class WumpusDriver
     // print the adjacent rooms
     System.out.println("There are tunnels to rooms "+cave[r-1].adj1+", "+cave[r-1].adj2+", and "+cave[r-1].adj3);
     // for debugging
-    System.out.println( "wumpus:"+wumpRoom+wumpCheck(r)+" pits:"+pitRoom1+","+pitRoom2+":"+pitCheck(r)+" spider:"+spidRoom1+","+spidRoom2+":"+spiderCheck(r)+" bats:"+batsRoom+":"+batsCheck(r)+" supply:"+supplyRoom+":"+supplyCheck(r) );
+    // System.out.println( "wumpus:"+wumpRoom+wumpCheck(r)+" pits:"+pitRoom1+","+pitRoom2+":"+pitCheck(r)+" spider:"+spidRoom1+","+spidRoom2+":"+spiderCheck(r)+" bats:"+batsRoom+":"+batsCheck(r)+" supply:"+supplyRoom+":"+supplyCheck(r) );
 		
     // check for bats, spiders, pits, and the wumpus to print warnings
 		if(wumpCheck(cave[r-1].adj1) || wumpCheck(cave[r-1].adj2) || wumpCheck(cave[r-1].adj3) )
@@ -238,6 +231,7 @@ class WumpusDriver
         System.out.println("You discovered a supply room hidden in the shadows!");
         Thread.sleep(500);
         System.out.println("Your arrows have been replensished!");
+        Thread.sleep(750);
         arrowCount=3;
         hasUsedSupply=true;
       }
