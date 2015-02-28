@@ -11,50 +11,31 @@ public class Room
     
     public Room()
     {
-      /* 
-      name=""; color=""; species="";
-      fins=0;
-      count++; 
-      */
-      
       roomNum=1;
       scenario="";
-   // count++;
-      
     }
     
     /**
-    @param n name of the fish
-    @param c color of the fish
-    @param s species of the fish
-    @param f number of fins, if applicable
+    @param rN the room number
+    @param ar1 the first adjacent room
+    @param ar2 the second adjacent room
+    @param ar3 the third adjacent room
+    @param scn the room scenario description
     */
     
     public Room(int rN, int ar1, int ar2, int ar3, String scn)
     {
-      /*
-      name=n; color=c; species=s; fins=f;
-      count++;
-      */
       roomNum=rN; adj1=ar1; adj2=ar2; 
       adj3=ar3; scenario=scn;
-   // count++;
-      
     }
     
     /**
     @param s Scanner (connected to a text file)
-      to read in to initialize the fish
+      to read in to initialize the room
     */
     
     public Room(Scanner s)
     {
-      /*
-      name=s.next();
-      color=s.next();
-      species=s.next();
-      fins=s.nextInt();
-      */
       roomNum=s.nextInt();
       
       adj1=s.nextInt();
@@ -63,45 +44,12 @@ public class Room
       
       s.nextLine();
       scenario=s.nextLine();
-    
     }
+    
     
     public String toString()
     {
       String ans=(roomNum+" adj1="+adj1+" adj2="+adj2+" adj3="+adj3+" scenario="+scenario);
       return ans;
     }
-    
-    // accessors
-    /**
-    @return the name of the fish
-    
-    
-    public String getName()
-      { 
-          return name; 
-      }
-      
-    public String getColor()
-      {
-          return color;
-      }
-      
-    public String getSpecies()
-      { 
-          return species;
-      }
-      
-    public int getFins()
-      {
-          return fins;
-      }
-      
-    public static void main(String[] args)
-    {
-       System.out.println(roomNum);
-       System.out.println(adj1,adj2,adj3);
-       System.out.println(scenario);
-    }
-    */
 }
