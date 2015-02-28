@@ -232,7 +232,14 @@ class WumpusDriver
     //check for supplyRoom
     if(supplyCheck(r))
     {
-      arrowCount=3;
+      if(hasUsedSupply==false;)
+      {
+        System.out.println("You discovered a supply room hidden in the shadows!")
+        Thread.sleep(500)
+        System.out.println("Your arrows have been replensished!")
+        arrowCount=3;
+        hasUsedSupply=true;
+      }
     }
     
     // check for bats, pits, or wumpus
@@ -250,6 +257,11 @@ class WumpusDriver
     {
       gameOver("Spiders attacked you!");
       return;
+    }
+    else if(batsCheck(r) )
+    {
+      System.out.println("Oh no! The bats carried you away!");
+      
     }
     
     startTurn(r, cave);
