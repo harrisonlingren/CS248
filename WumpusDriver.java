@@ -301,7 +301,7 @@ class WumpusDriver
       }
     }
     
-    else if(ansNum==(cave[r-1].adj3) ) 
+    else if(ansNum==(cave[r-1].adj3) )
     {
       if( wumpCheck(cave[r-1].adj3) )
       {
@@ -320,8 +320,9 @@ class WumpusDriver
     System.out.println("Shooting into room "+ansNum+"...");
     arrowCount--;
     Thread.sleep(500);
+    System.out.println("Your arrow goes down the tunnel and is lost.");
+    Thread.sleep(750);
     
-    // if(etc....)
     startTurn(r, cave);
     
   }
@@ -331,6 +332,8 @@ class WumpusDriver
   {
     String ans;
     
+    System.out.println("Your arrow goes down the tunnel and finds its mark!");
+    Thread.sleep(500);
     System.out.println("Congratulations! You win!");
     Thread.sleep(1000);
     System.out.println("Do you want to play again? (y/n)");
