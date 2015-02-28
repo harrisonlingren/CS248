@@ -77,8 +77,9 @@ class WumpusDriver
   public static int[] RandomizeArray(int[] array){
     Random rgen = new Random();  // Random number generator      
  
-    for (int i=0; i<array.length-2; i++) {
-        int randomPosition = rgen.nextInt(array.length);
+    for (int i=0; i<array.length-1; i++) 
+    {
+        int randomPosition = rgen.nextInt(array.length-2);
         int temp = array[i];
         array[i] = array[randomPosition];
         array[randomPosition] = temp;
@@ -326,9 +327,9 @@ class WumpusDriver
     String ans;
     
     System.out.println("Congratulations! You win!");
-    Thread.sleep(500);
+    Thread.sleep(1000);
     System.out.println("Do you want to play again? (y/n)");
-    
+    System.out.print(":");
     ans=input.next();
     
     if(ans.equals("y") ) {startGame();}
@@ -343,6 +344,11 @@ class WumpusDriver
     System.out.println(reason);
     Thread.sleep(1000);
     System.out.println("GAME OVER...");
+    System.out.println("Do you want to play again? (y/n)");
+    System.out.print(":");
+    ans=input.next();
+    
+    if(ans.equals("y") ) {startGame();}
     
   }
 
