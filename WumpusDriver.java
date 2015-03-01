@@ -187,8 +187,8 @@ class WumpusDriver
 	  ans=input.next();
 		
   	//if move...
-	  if( ans.equals("M") ) { startMove(r, cave); }
-	  else if( ans.equals("S") ) { shoot(r, cave); }
+	  if( ans.equals("M") || ans.equals("m") ) { startMove(r, cave); }
+	  else if( ans.equals("S") || ans.equals("s") ) { shoot(r, cave); }
 	  else 
 	  {
 		  // starts move over
