@@ -348,7 +348,7 @@ class WumpusDriver
     System.out.print(":");
     ans=input.next();
     
-    if(ans.equals("y") ) {startGame();}
+    if(ans.equals("y") || ans.equals("Y") ) {startGame();}
     else {return;}
     
   }
@@ -368,7 +368,7 @@ class WumpusDriver
     Thread.sleep(100);
     System.out.print(":");
     ans=input.next();
-    if(ans.equals("y") ) { startGame(); }
+    if(ans.equals("y") || ans.equals("Y") ) { startGame(); }
     else {return;}
   }
 }
