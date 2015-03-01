@@ -210,9 +210,8 @@ class WumpusDriver
     System.out.print(":");
     ansNum=input.nextInt();
     
-    if(ansNum==(cave[r-1].adj1) ) { r=cave[r-1].adj1; }
-    else if(ansNum==(cave[r-1].adj2) ) { r=cave[r-1].adj2; }
-    else if(ansNum==(cave[r-1].adj3) ) { r=cave[r-1].adj3; }
+    if(ansNum==(cave[r-1].adj1) || ansNum==(cave[r-1].adj2) || ansNum==(cave[r-1].adj3)
+      { move(ansNum, cave); }
     else
     {
       System.out.println("You can't get to there from here.");
