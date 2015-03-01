@@ -262,7 +262,7 @@ class WumpusDriver
     {
       System.out.println("Oh no! The bats carried you away!");
       Thread.sleep(100);
-      int newR = 1+rgen.nextInt(cave.length-1)
+      int newR = 1+rgen.nextInt(cave.length-1);
       move(newR, cave);
     }
     
