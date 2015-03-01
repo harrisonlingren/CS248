@@ -193,7 +193,7 @@ class WumpusDriver
 	  {
 		  // starts move over
 		  System.out.println("Did you say something?");
-		  Thread.sleep(100);
+		  Thread.sleep(1000);
 		  startTurn(r, cave);
 	  }
   }
@@ -349,6 +349,7 @@ class WumpusDriver
     ans=input.next();
     
     if(ans.equals("y") ) {startGame();}
+    else {return;}
     
   }
   
@@ -368,5 +369,6 @@ class WumpusDriver
     System.out.print(":");
     ans=input.next();
     if(ans.equals("y") ) { startGame(); }
+    else {return;}
   }
 }
