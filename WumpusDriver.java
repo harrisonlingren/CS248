@@ -210,7 +210,7 @@ class WumpusDriver
     System.out.print(":");
     ansNum=input.nextInt();
     
-    if(ansNum==(cave[r-1].adj1) || ansNum==(cave[r-1].adj2) || ansNum==(cave[r-1].adj3)
+    if(ansNum==(cave[r-1].adj1) || ansNum==(cave[r-1].adj2) || ansNum==(cave[r-1].adj3) )
       { move(ansNum, cave); }
     else
     {
