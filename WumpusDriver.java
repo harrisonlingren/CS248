@@ -93,25 +93,7 @@ class WumpusDriver
     System.out.print(".");
     Thread.sleep(250);
     
-    /*
-      
-  	System.out.println();			
-  	System.out.println("                    _     _   _            __    __                                  ");
-  	Thread.sleep(50);
-  	System.out.println("  /\\  /\\_   _ _ __ | |_  | |_| |__   ___  / / /\\ \\ \\_   _ _ __ ___  _ __  _   _ ___ TM");
-  	Thread.sleep(50);
-  	System.out.println(" / /_/ / | | | '_ \\| __| | __| '_ \\ / _ \\ \\ \\/  \\/ / | | | '_ ` _ \\| '_ \\| | | / __| ");
-  	Thread.sleep(50);
-  	System.out.println("/ __  /| |_| | | | | |_  | |_| | | |  __/  \\  /\\  /| |_| | | | | | | |_) | |_| \\__ \\ ");
-  	Thread.sleep(50);
-  	System.out.println("\\/ /_/  \\__,_|_| |_|\\__|  \\__|_| |_|\\___|   \\/  \\/  \\__,_|_| |_| |_| .__/ \\__,_|___/ ");
-  	Thread.sleep(50);
-  	System.out.println("                                                                   |_|               ");
-  	Thread.sleep(250);
-  	
-  	*/
-  	
-  	System.out.println();      
+		System.out.println();      
     System.out.println("|   |          |        --.--|             . . .                         ");
     Thread.sleep(50);
     System.out.println("|---|.   .,---.|---       |  |---.,---.    | | |.   .,-.-.,---..   .,---.TM");
@@ -120,7 +102,7 @@ class WumpusDriver
     Thread.sleep(50);
     System.out.println("`   '`---'`   '`---'      `  `   '`---'    `-'-'`---'` ' '|---'`---'`---'");
     Thread.sleep(50);
-    System.out.println("|               ");
+    System.out.println("                                                          |               ");
     Thread.sleep(250);
   	
     startTurn(currentRoom, caveStructure);
