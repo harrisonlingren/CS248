@@ -17,6 +17,8 @@ class WumpusDriver
   int supplyRoom;
   boolean hasUsedSupply=false;
   
+  Random rgen = new Random();
+  
   Scanner input = new Scanner(System.in);
 	
   public void setRooms()
@@ -54,7 +56,6 @@ class WumpusDriver
 	}
 
   public static int[] shuffleArray(int[] array){
-    Random rgen = new Random();  // Random number generator      
  
     for (int i=0; i<array.length-1; i++) 
     {
@@ -186,11 +187,8 @@ class WumpusDriver
 	  ans=input.next();
 		
   	//if move...
-	  if( ans.equals("M") ) { move(r, cave); }
-	  else if( ans.equals("S") ) 
-	  { 
-	    shoot(r, cave);
-	  }
+	  if( ans.equals("M") ) { startMove(r, cave) }
+	  else if( ans.equals("S") ) { shoot(r, cave); }
 	  else 
 	  {
 		  // starts move over
@@ -199,12 +197,10 @@ class WumpusDriver
 		  startTurn(r, cave);
 	  }
   }
-  
-   
-  public void move(int r, Room[] cave)
-    throws IOException, InterruptedException
-  {
     
+  // initializes new move with 'r'
+  public void startMove(int r, Room[] cave)
+  {
     int ansNum=-1;
     
     System.out.println();
@@ -220,10 +216,13 @@ class WumpusDriver
     {
       System.out.println("You can't get to there from here.");
       Thread.sleep(500);
-      move(r, cave);
-    }
-    
-    //starts a new move with new 'r'
+      startMove(r, cave);
+    } 
+  }
+  
+  public void move(int r, Room[] cave)
+    throws IOException, InterruptedException
+  {
     
     System.out.println("Moving to room "+ansNum+"...");
     Thread.sleep(500);
@@ -263,11 +262,11 @@ class WumpusDriver
     {
       System.out.println("Oh no! The bats carried you away!");
       Thread.sleep(100);
-      
+      int newR = 1+rgen.nextInt(cave.length-1)
+      move(newR, cave);
     }
     
     startTurn(r, cave);
-    
   }
   
   public void shoot(int r, Room[] cave)
