@@ -92,6 +92,8 @@ class WumpusDriver
     Thread.sleep(250);
     System.out.print(".");
     Thread.sleep(250);
+    
+    /*
       
   	System.out.println();			
   	System.out.println("                    _     _   _            __    __                                  ");
@@ -106,6 +108,21 @@ class WumpusDriver
   	Thread.sleep(50);
   	System.out.println("                                                                   |_|               ");
   	Thread.sleep(250);
+  	
+  	*/
+  	
+  	System.out.println();      
+    System.out.println("|   |          |        --.--|             . . .                         ");
+    Thread.sleep(50);
+    System.out.println("|---|.   .,---.|---       |  |---.,---.    | | |.   .,-.-.,---..   .,---.TM");
+    Thread.sleep(50);
+    System.out.println("|   ||   ||   ||          |  |   ||---'    | | ||   || | ||   ||   |`---.");
+    Thread.sleep(50);
+    System.out.println("`   '`---'`   '`---'      `  `   '`---'    `-'-'`---'` ' '|---'`---'`---'");
+    Thread.sleep(50);
+    System.out.println("|               ");
+    Thread.sleep(250);
+  	
     startTurn(currentRoom, caveStructure);
     
   }
