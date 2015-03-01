@@ -55,7 +55,7 @@ class WumpusDriver
     supplyRoom=roomAssign[6];
 	}
 
-  public static int[] shuffleArray(int[] array){
+  public int[] shuffleArray(int[] array){
  
     for (int i=0; i<array.length-1; i++) 
     {
@@ -187,7 +187,7 @@ class WumpusDriver
 	  ans=input.next();
 		
   	//if move...
-	  if( ans.equals("M") ) { startMove(r, cave) }
+	  if( ans.equals("M") ) { startMove(r, cave); }
 	  else if( ans.equals("S") ) { shoot(r, cave); }
 	  else 
 	  {
@@ -224,7 +224,7 @@ class WumpusDriver
     throws IOException, InterruptedException
   {
     
-    System.out.println("Moving to room "+ansNum+"...");
+    System.out.println("Moving to room "+r+"...");
     Thread.sleep(500);
     currentRoom=r;
     
