@@ -200,6 +200,7 @@ class WumpusDriver
     
   // initializes new move with 'r'
   public void startMove(int r, Room[] cave)
+    throws IOException, InterruptedException
   {
     int ansNum=-1;
     
