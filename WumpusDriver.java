@@ -149,30 +149,34 @@ class WumpusDriver
   	String ans="";
   	int ansNum;
 		
-    // print the room number
+		// print the room number
     System.out.println("You are in room "+r+".");
+    Thread.sleep(100);
     // print the arrow count
     System.out.println("You have "+arrowCount+" arrows left.");
+    Thread.sleep(100);
     System.out.println();
     // print the room scenario
     System.out.println(cave[r-1].scenario);
+    Thread.sleep(100);
     // print the adjacent rooms
     System.out.println("There are tunnels to rooms "+cave[r-1].adj1+", "+cave[r-1].adj2+", and "+cave[r-1].adj3+".");
+    Thread.sleep(100);
     // for debugging
     // System.out.println( "wumpus:"+wumpRoom+wumpCheck(r)+" pits:"+pitRoom1+","+pitRoom2+":"+pitCheck(r)+" spider:"+spidRoom1+","+spidRoom2+":"+spiderCheck(r)+" bats:"+batsRoom+":"+batsCheck(r)+" supply:"+supplyRoom+":"+supplyCheck(r) );
 		
     // check for bats, spiders, pits, and the wumpus to print warnings
 		if(wumpCheck(cave[r-1].adj1) || wumpCheck(cave[r-1].adj2) || wumpCheck(cave[r-1].adj3) )
-		  { System.out.println("You smell some nasty Wumpus!"); }
+		  { System.out.println("You smell some nasty Wumpus!"); Thread.sleep(100); }
 		
 		if(spiderCheck(cave[r-1].adj1) || spiderCheck(cave[r-1].adj2) || spiderCheck(cave[r-1].adj3) )
-      { System.out.println("You hear a faint clicking noise."); }
+      { System.out.println("You hear a faint clicking noise."); Thread.sleep(100);}
     
     if(pitCheck(cave[r-1].adj1) || pitCheck(cave[r-1].adj2) || pitCheck(cave[r-1].adj3) )
-      { System.out.println("You smell a dank odor."); }
+      { System.out.println("You smell a dank odor."); Thread.sleep(100);}
     
     if(batsCheck(cave[r-1].adj1) || batsCheck(cave[r-1].adj2) || batsCheck(cave[r-1].adj3) )
-      { System.out.println("You hear squeaks around the corner..."); }
+      { System.out.println("You hear squeaks around the corner..."); Thread.sleep(100);}
 		  
 		//prompt for action
   	System.out.println();
@@ -191,6 +195,7 @@ class WumpusDriver
 	  {
 		  // starts move over
 		  System.out.println("Did you say something?");
+		  Thread.sleep(100);
 		  startTurn(r, cave);
 	  }
   }
@@ -204,6 +209,7 @@ class WumpusDriver
     
     System.out.println();
     System.out.println("Which room? ("+cave[r-1].adj1+", "+cave[r-1].adj2+", or "+cave[r-1].adj3+")");
+    Thread.sleep(100);
     System.out.print(":");
     ansNum=input.nextInt();
     
@@ -256,6 +262,7 @@ class WumpusDriver
     else if(batsCheck(r) )
     {
       System.out.println("Oh no! The bats carried you away!");
+      Thread.sleep(100);
       
     }
     
@@ -280,6 +287,7 @@ class WumpusDriver
     
     System.out.println();
     System.out.println("Which room? ("+cave[r-1].adj1+", "+cave[r-1].adj2+", or "+cave[r-1].adj3+")");
+    Thread.sleep(100);
     System.out.print(":");
     ansNum=input.nextInt();
     
@@ -337,6 +345,7 @@ class WumpusDriver
     System.out.println("Congratulations! You win!");
     Thread.sleep(1000);
     System.out.println("Do you want to play again? (y/n)");
+    Thread.sleep(100);
     System.out.print(":");
     ans=input.next();
     
@@ -350,12 +359,15 @@ class WumpusDriver
     String ans;
     
     System.out.println("Oh no!");
+    Thread.sleep(100);
     System.out.println(reason);
     Thread.sleep(1000);
     System.out.println("GAME OVER...");
+    Thread.sleep(100);
     System.out.println("Do you want to play again? (y/n)");
+    Thread.sleep(100);
     System.out.print(":");
     ans=input.next();
-    if(ans.equals("y") ) {startGame();}
+    if(ans.equals("y") ) { startGame(); }
   }
 }
