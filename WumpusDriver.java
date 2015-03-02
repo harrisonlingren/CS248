@@ -1,13 +1,30 @@
+/**
+HuntTheWumpus program - WumpusDriver class for HuntTheWumpus main
+@author Harrison Lingren
+*/
+
 import java.io.*;
 import java.util.*;
 
 class WumpusDriver
 {
-   
+  /**
+    @param currentRoom the room number that the player is currently in
+    @param arrowCount the number of arrows the player has
+    @param cave array containing the room objects
+    @param pitRoom1 the first room with a pit
+    @param pitRoom2 the second room with a pit
+    @param spidRoom1 the first room with spiders
+    @param spidRoom2 the first room with spiders
+    @param batsRoom the room with the bats
+    @param supplyRoom the room with more arrows
+    @param hasUsedSupply true if the player has used the supply room
+    @param rgen random generator for the shuffleArray function
+    @param input the player input scanner
+  */
+  
   int currentRoom;
   int arrowCount;
-  Room caveStructure[];
-  
   int wumpRoom;
   int pitRoom1;
   int pitRoom2;
@@ -16,11 +33,11 @@ class WumpusDriver
   int batsRoom;
   int supplyRoom;
   boolean hasUsedSupply=false;
-  
+  Room cave[];
   Random rgen = new Random();
-  
   Scanner input = new Scanner(System.in);
 	
+	/** shuffles and assigns the obstacles to rooms */
   public void setRooms()
     throws IOException
   {
@@ -29,13 +46,13 @@ class WumpusDriver
    
     // read the file into an array
     int n=caveScan.nextInt();
-    caveStructure=new Room[n];
-    for(int i=0; i<caveStructure.length; i++)
-			caveStructure[i]=new Room(caveScan);
+    cave=new Room[n];
+    for(int i=0; i<cave.length; i++)
+			cave[i]=new Room(caveScan);
 			
 		// generate random numbers to assign the wumpus, 2 pits, 2 spiders, bats, and supply room
-		int[] roomAssign = new int[caveStructure.length];
-		for(int i=0; i<caveStructure.length-1; i++)
+		int[] roomAssign = new int[cave.length];
+		for(int i=0; i<cave.length-1; i++)
       {
         roomAssign[i]=i+2;
         // for debugging, prints intial roomAssign
@@ -53,6 +70,8 @@ class WumpusDriver
     supplyRoom=roomAssign[6];
 	}
 
+  /** @return the array after shuffling
+    @param array the input array */
   public int[] shuffleArray(int[] array){
  
     for (int i=0; i<array.length-1; i++) 
@@ -70,10 +89,10 @@ class WumpusDriver
       System.out.print(i+"="+array[i]+", ");
     }
     */
-    
     return array;
   }
   
+  /** starts the game, also used to restart after game over */
   public void startGame()
 		throws IOException, InterruptedException
   {
@@ -105,41 +124,53 @@ class WumpusDriver
     System.out.println("                                                          |               ");
     Thread.sleep(250);
   	
-    startTurn(currentRoom, caveStructure);
+    startTurn(currentRoom, cave);
     
   }
 
+  /** @return true if the wumpus is in 'r'
+    @param r the room being checked */
 	public boolean wumpCheck(int r)
 	{
 		if(r==wumpRoom) {return true;}
 		else {return false;}
 	}
-	 
+  
+  /** @return true if spiders are in 'r' 
+    @param r the room being checked */
 	public boolean spiderCheck(int r)
 	{
 	  if(r==spidRoom1 || r==spidRoom2) {return true;}
 	  else {return false;}
 	}
-	 
+
+  /** @return true if there is a pit in 'r'
+    @param r the room being checked */
 	public boolean pitCheck(int r)
 	{
 	  if(r==pitRoom1 || r==pitRoom2) {return true;}
 	  else {return false;}
 	}
 	
+	/** @return true if 'r' is the supply room
+    @param r the room being checked */
 	public boolean supplyCheck(int r)
 	{
 	  if(r==supplyRoom) {return true;}
 	  else {return false;}
 	}
 	
+	/** @return true if there are bats in 'r'
+    @param r the room being checked */
 	public boolean batsCheck(int r)
 	{
 	  if(r==batsRoom) {return true;}
 	  else {return false;}
 	}
 	
-	// 
+	/** starts the next turn, prompts user for action
+    @param r the current room
+    @param cave the input array of room objects*/ 
   public void startTurn(int r, Room[] cave)
 		throws IOException, InterruptedException
   {
@@ -197,7 +228,9 @@ class WumpusDriver
 	  }
   }
     
-  // initializes new move with 'r'
+  /** starts the next movement, prompts user for room to move to
+    @param r the current room
+    @param cave the input array of room objects*/
   public void startMove(int r, Room[] cave)
     throws IOException, InterruptedException
   {
@@ -219,6 +252,9 @@ class WumpusDriver
     } 
   }
   
+  /** moves to target room, 'r'
+    @param r the current room
+    @param cave the input array of room objects*/
   public void move(int r, Room[] cave)
     throws IOException, InterruptedException
   {
@@ -268,6 +304,9 @@ class WumpusDriver
     startTurn(r, cave);
   }
   
+  /** starts the shoot action, prompts user for room to shoot into
+    @param r the current room
+    @param cave the input array of room objects*/
   public void shoot(int r, Room[] cave)
     throws IOException, InterruptedException
   {
@@ -333,6 +372,7 @@ class WumpusDriver
     
   }
   
+  /** method to end the game if the user hits the Wumpus */
   public void winGame()
     throws IOException, InterruptedException
   {
@@ -352,6 +392,7 @@ class WumpusDriver
     
   }
   
+  /** method to end the game if the user is killed */
   public void gameOver(String reason)
     throws IOException, InterruptedException
   {
