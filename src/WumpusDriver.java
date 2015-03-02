@@ -6,7 +6,7 @@ HuntTheWumpus program - WumpusDriver class for HuntTheWumpus main
 import java.io.*;
 import java.util.*;
 
-class WumpusDriver
+public class WumpusDriver
 {
   /**
     @param currentRoom the room number that the player is currently in
