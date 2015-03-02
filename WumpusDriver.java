@@ -93,6 +93,7 @@ class WumpusDriver
     System.out.print(".");
     Thread.sleep(250);
     
+    System.out.println();
 		System.out.println();      
     System.out.println("|   |          |        --.--|             . . .                         ");
     Thread.sleep(50);
