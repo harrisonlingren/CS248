@@ -24,8 +24,6 @@ class WumpusDriver
   public void setRooms()
     throws IOException
   {
-    System.out.println("");
-
     // open the caves file
     Scanner caveScan=new Scanner(new FileReader("cave.txt"));
    
@@ -43,7 +41,7 @@ class WumpusDriver
         // for debugging, prints intial roomAssign
         // System.out.print(i+"="+roomAssign[i]+", ");
       }
-    System.out.println();
+      
 		roomAssign=shuffleArray(roomAssign);
 		
 		wumpRoom=roomAssign[0];
@@ -84,6 +82,7 @@ class WumpusDriver
     currentRoom=1;
      
 	  //prints ASCII title
+	  System.out.println();
   	System.out.print("Welcome to");
   	Thread.sleep(250);
   	System.out.print(".");
