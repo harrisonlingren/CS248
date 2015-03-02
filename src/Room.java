@@ -19,29 +19,7 @@ public class Room
     int roomNum;
     String scenario;
     int adj1, adj2, adj3;
-		
-    /*  
-    public Room()
-    {
-      roomNum=1;
-      scenario="";
-    }
-    
-    
-      @param rN the room number
-      @param ar1 the first adjacent room
-      @param ar2 the second adjacent room
-      @param ar3 the third adjacent room
-      @param scn the room scenario description
-    */
-    
-    
-    /*public Room(int rN, int ar1, int ar2, int ar3, String scn)
-    {
-      roomNum=rN; adj1=ar1; adj2=ar2; 
-      adj3=ar3; scenario=scn;
-    }*/
-    
+
     /** intializes the room object
       @param s input scanner to read from file */
     public Room(Scanner s)
