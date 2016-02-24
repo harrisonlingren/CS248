@@ -36,8 +36,8 @@ public class WumpusDriver
   Room cave[];
   Random rgen = new Random();
   Scanner input = new Scanner(System.in);
-	
-	/** shuffles and assigns the obstacles to rooms */
+  
+  /** shuffles and assigns the obstacles to rooms */
   public void setRooms()
     throws IOException
   {
@@ -48,27 +48,27 @@ public class WumpusDriver
     int n=caveScan.nextInt();
     cave=new Room[n];
     for(int i=0; i<cave.length; i++)
-			cave[i]=new Room(caveScan);
-			
-		// generate random numbers to assign the wumpus, 2 pits, 2 spiders, bats, and supply room
-		int[] roomAssign = new int[cave.length];
-		for(int i=0; i<cave.length-1; i++)
+      cave[i]=new Room(caveScan);
+      
+    // generate random numbers to assign the wumpus, 2 pits, 2 spiders, bats, and supply room
+    int[] roomAssign = new int[cave.length];
+    for(int i=0; i<cave.length-1; i++)
       {
         roomAssign[i]=i+2;
         // for debugging, prints intial roomAssign
         // System.out.print(i+"="+roomAssign[i]+", ");
       }
       
-		roomAssign=shuffleArray(roomAssign);
-		
-		wumpRoom=roomAssign[0];
+    roomAssign=shuffleArray(roomAssign);
+    
+    wumpRoom=roomAssign[0];
     pitRoom1=roomAssign[1];
     pitRoom2=roomAssign[2];
     spidRoom1=roomAssign[3];
     spidRoom2=roomAssign[4];
     batsRoom=roomAssign[5];
     supplyRoom=roomAssign[6];
-	}
+  }
 
   /** @return the array after shuffling
     @param array the input array */
@@ -94,25 +94,25 @@ public class WumpusDriver
   
   /** starts the game, also used to restart after game over */
   public void startGame()
-		throws IOException, InterruptedException
+    throws IOException, InterruptedException
   {
     setRooms();
     arrowCount=3;
     currentRoom=1;
      
-	  //prints ASCII title
-	  System.out.println();
-  	System.out.print("Welcome to");
-  	Thread.sleep(250);
-  	System.out.print(".");
-  	Thread.sleep(250);
+    //prints ASCII title
+    System.out.println();
+    System.out.print("Welcome to");
+    Thread.sleep(250);
+    System.out.print(".");
+    Thread.sleep(250);
     System.out.print(".");
     Thread.sleep(250);
     System.out.print(".");
     Thread.sleep(250);
     
     System.out.println();
-		System.out.println();      
+    System.out.println();      
     System.out.println("|   |          |        --.--|             . . .                         ");
     Thread.sleep(50);
     System.out.println("|---|.   .,---.|---       |  |---.,---.    | | |.   .,-.-.,---..   .,---.TM");
@@ -123,64 +123,64 @@ public class WumpusDriver
     Thread.sleep(50);
     System.out.println("                                                          |               ");
     Thread.sleep(250);
-  	
+    
     startTurn(currentRoom, cave);
     
   }
 
   /** @return true if the wumpus is in 'r'
     @param r the room being checked */
-	public boolean wumpCheck(int r)
-	{
-		if(r==wumpRoom) {return true;}
-		else {return false;}
-	}
+  public boolean wumpCheck(int r)
+  {
+    if(r==wumpRoom) {return true;}
+    else {return false;}
+  }
   
   /** @return true if spiders are in 'r' 
     @param r the room being checked */
-	public boolean spiderCheck(int r)
-	{
-	  if(r==spidRoom1 || r==spidRoom2) {return true;}
-	  else {return false;}
-	}
+  public boolean spiderCheck(int r)
+  {
+    if(r==spidRoom1 || r==spidRoom2) {return true;}
+    else {return false;}
+  }
 
   /** @return true if there is a pit in 'r'
     @param r the room being checked */
-	public boolean pitCheck(int r)
-	{
-	  if(r==pitRoom1 || r==pitRoom2) {return true;}
-	  else {return false;}
-	}
-	
-	/** @return true if 'r' is the supply room
+  public boolean pitCheck(int r)
+  {
+    if(r==pitRoom1 || r==pitRoom2) {return true;}
+    else {return false;}
+  }
+  
+  /** @return true if 'r' is the supply room
     @param r the room being checked */
-	public boolean supplyCheck(int r)
-	{
-	  if(r==supplyRoom) {return true;}
-	  else {return false;}
-	}
-	
-	/** @return true if there are bats in 'r'
+  public boolean supplyCheck(int r)
+  {
+    if(r==supplyRoom) {return true;}
+    else {return false;}
+  }
+  
+  /** @return true if there are bats in 'r'
     @param r the room being checked */
-	public boolean batsCheck(int r)
-	{
-	  if(r==batsRoom) {return true;}
-	  else {return false;}
-	}
-	
-	/** starts the next turn, prompts user for action
+  public boolean batsCheck(int r)
+  {
+    if(r==batsRoom) {return true;}
+    else {return false;}
+  }
+  
+  /** starts the next turn, prompts user for action
     @param r the current room
     @param cave the input array of room objects*/ 
   public void startTurn(int r, Room[] cave)
-		throws IOException, InterruptedException
+    throws IOException, InterruptedException
   {
-	  System.out.println();
-		
-  	//initialize input
-  	String ans="";
-  	int ansNum;
-		
-		// print the room number
+    System.out.println();
+    
+    //initialize input
+    String ans="";
+    int ansNum;
+    
+    // print the room number
     System.out.println("You are in room "+r+".");
     Thread.sleep(100);
     // print the arrow count
@@ -195,12 +195,12 @@ public class WumpusDriver
     Thread.sleep(100);
     // for debugging
     // System.out.println( "wumpus:"+wumpRoom+wumpCheck(r)+" pits:"+pitRoom1+","+pitRoom2+":"+pitCheck(r)+" spider:"+spidRoom1+","+spidRoom2+":"+spiderCheck(r)+" bats:"+batsRoom+":"+batsCheck(r)+" supply:"+supplyRoom+":"+supplyCheck(r) );
-		
+    
     // check for bats, spiders, pits, and the wumpus to print warnings
-		if(wumpCheck(cave[r-1].adj1) || wumpCheck(cave[r-1].adj2) || wumpCheck(cave[r-1].adj3) )
-		  { System.out.println("You smell some nasty Wumpus!"); Thread.sleep(100); }
-		
-		if(spiderCheck(cave[r-1].adj1) || spiderCheck(cave[r-1].adj2) || spiderCheck(cave[r-1].adj3) )
+    if(wumpCheck(cave[r-1].adj1) || wumpCheck(cave[r-1].adj2) || wumpCheck(cave[r-1].adj3) )
+      { System.out.println("You smell some nasty Wumpus!"); Thread.sleep(100); }
+    
+    if(spiderCheck(cave[r-1].adj1) || spiderCheck(cave[r-1].adj2) || spiderCheck(cave[r-1].adj3) )
       { System.out.println("You hear a faint clicking noise."); Thread.sleep(100);}
     
     if(pitCheck(cave[r-1].adj1) || pitCheck(cave[r-1].adj2) || pitCheck(cave[r-1].adj3) )
@@ -208,24 +208,24 @@ public class WumpusDriver
     
     if(batsCheck(cave[r-1].adj1) || batsCheck(cave[r-1].adj2) || batsCheck(cave[r-1].adj3) )
       { System.out.println("You hear squeaks around the corner..."); Thread.sleep(100);}
-		  
-		//prompt for action
-  	System.out.println();
-  	System.out.println("(M)ove or (S)hoot?");
-  	System.out.print(":");
-	
-	  ans=input.next();
-		
-  	//if move...
-	  if( ans.equals("M") || ans.equals("m") ) { startMove(r, cave); }
-	  else if( ans.equals("S") || ans.equals("s") ) { shoot(r, cave); }
-	  else 
-	  {
-		  // starts move over
-		  System.out.println("Did you say something?");
-		  Thread.sleep(1000);
-		  startTurn(r, cave);
-	  }
+      
+    //prompt for action
+    System.out.println();
+    System.out.println("(M)ove or (S)hoot?");
+    System.out.print(":");
+  
+    ans=input.next();
+    
+    //if move...
+    if( ans.equals("M") || ans.equals("m") ) { startMove(r, cave); }
+    else if( ans.equals("S") || ans.equals("s") ) { shoot(r, cave); }
+    else 
+    {
+      // starts move over
+      System.out.println("Did you say something?");
+      Thread.sleep(1000);
+      startTurn(r, cave);
+    }
   }
     
   /** starts the next movement, prompts user for room to move to
