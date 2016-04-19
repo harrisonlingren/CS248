@@ -1,5 +1,5 @@
 // Nate Dodge, Harrison Lingren, Chance Seger, Jacob Wierman
-// Tic-Tac-Toe GUI found on University of North Carolina at Chapel Hill
+// Jerry-Tac-Toe Application
 
 import javax.swing.*;
 import java.awt.*;
@@ -19,11 +19,11 @@ public class JTT extends JFrame {
 	private CellButtonHandler[] cellHandlers;
 	private ExitButtonHandler exitHandler;
 	private InitButtonHandler initHandler;
-  private ImageIcon neutralIcon = new ImageIcon("unpressed.png");
-  private ImageIcon noughtIcon = new ImageIcon("pressedRed.png");
-  private ImageIcon crossIcon = new ImageIcon("pressedBlue.png");
-  private static JLabel userGun = new JLabel(new ImageIcon("user.png"));
-  private static JLabel cpuGun = new JLabel(new ImageIcon("cpu.png"));
+	private ImageIcon neutralIcon = new ImageIcon("unpressed.png");
+	private ImageIcon noughtIcon = new ImageIcon("pressedRed.png");
+	private ImageIcon crossIcon = new ImageIcon("pressedBlue.png");
+	private static JLabel userGun = new JLabel(new ImageIcon("user.png"));
+	private static JLabel cpuGun = new JLabel(new ImageIcon("cpu.png"));
   
   
 	private static boolean noughts;
@@ -35,10 +35,10 @@ public class JTT extends JFrame {
 		setSize(WIDTH, HEIGHT);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
     
-    // Set background
-    setLayout(new BorderLayout());
-    setContentPane(new JLabel(new ImageIcon("bg.png")));
-    setLayout(null);
+		// Set background
+		setLayout(new BorderLayout());
+		setContentPane(new JLabel(new ImageIcon("bg.png")));
+		setLayout(null);
     
 		// Create cells and handlers
 		cells = new JButton[9];
@@ -52,11 +52,11 @@ public class JTT extends JFrame {
 
 		// Create init and exit buttons and handlers
 		ImageIcon exitIcon = new ImageIcon("exit.png");
-    exitButton = new JButton("",exitIcon);
+		exitButton = new JButton("",exitIcon);
 		exitHandler = new ExitButtonHandler();
 		exitButton.addActionListener(exitHandler);
     
-    ImageIcon initIcon = new ImageIcon("init.png");
+		ImageIcon initIcon = new ImageIcon("init.png");
 		initButton = new JButton("",initIcon);
 		initHandler = new InitButtonHandler();
 		initButton.addActionListener(initHandler);
@@ -68,52 +68,52 @@ public class JTT extends JFrame {
 		// Add elements to the grid content pane
 		for (int i = 0; i < 9; i++) {
 			add(cells[i]);
-      cells[i].setHorizontalTextPosition(SwingConstants.CENTER);
-      cells[i].setOpaque(false);
-      cells[i].setContentAreaFilled(false);
-      cells[i].setBorderPainted(false);
+			cells[i].setHorizontalTextPosition(SwingConstants.CENTER);
+			cells[i].setOpaque(false);
+			cells[i].setContentAreaFilled(false);
+			cells[i].setBorderPainted(false);
 		}
     
-    add(userGun);
-    add(cpuGun);
-		
-    userGun.setBounds(20,235,223,81);
-    userGun.setVisible(false);
-    cpuGun.setBounds(1035,235,223,81);
-    cpuGun.setVisible(false);
+		add(userGun);
+		add(cpuGun);
+
+		userGun.setBounds(20,235,223,81);
+		userGun.setVisible(false);
+		cpuGun.setBounds(1035,235,223,81);
+		cpuGun.setVisible(false);
     
-    add(initButton);
+		add(initButton);
 		add(result);
 		add(exitButton);
     
-    // set sizes and locations of each button
-    result.setBounds(540,560,100,100);
-    exitButton.setBounds(720,560,102,102);
-    initButton.setBounds(420,540,127,131);
-    
-    cells[0].setBounds(300,100,88,88);
-    cells[1].setBounds(585,100,88,88);
-    cells[2].setBounds(870,100,88,88);
-    cells[3].setBounds(435,260,88,88);
-    cells[4].setBounds(585,260,88,88);
-    cells[5].setBounds(750,260,88,88);
-    cells[6].setBounds(300,440,88,88);
-    cells[7].setBounds(585,440,88,88);
-    cells[8].setBounds(870,440,88,88);
-    
-    // make exit/reset buttons transparent
-    exitButton.setHorizontalTextPosition(SwingConstants.CENTER);
-    exitButton.setOpaque(false);
-    exitButton.setContentAreaFilled(false);
-    exitButton.setBorderPainted(false);
-    initButton.setHorizontalTextPosition(SwingConstants.CENTER);
-    initButton.setOpaque(false);
-    initButton.setContentAreaFilled(false);
-    initButton.setBorderPainted(false);
-    
-    result.setFont(result.getFont().deriveFont(14.0f));
-    
-    
+		// set sizes and locations of each button
+		result.setBounds(540,560,100,100);
+		exitButton.setBounds(720,560,102,102);
+		initButton.setBounds(420,540,127,131);
+
+		cells[0].setBounds(300,100,88,88);
+		cells[1].setBounds(585,100,88,88);
+		cells[2].setBounds(870,100,88,88);
+		cells[3].setBounds(435,260,88,88);
+		cells[4].setBounds(585,260,88,88);
+		cells[5].setBounds(750,260,88,88);
+		cells[6].setBounds(300,440,88,88);
+		cells[7].setBounds(585,440,88,88);
+		cells[8].setBounds(870,440,88,88);
+
+		// make exit/reset buttons transparent
+		exitButton.setHorizontalTextPosition(SwingConstants.CENTER);
+		exitButton.setOpaque(false);
+		exitButton.setContentAreaFilled(false);
+		exitButton.setBorderPainted(false);
+		initButton.setHorizontalTextPosition(SwingConstants.CENTER);
+		initButton.setOpaque(false);
+		initButton.setContentAreaFilled(false);
+		initButton.setBorderPainted(false);
+
+		result.setFont(result.getFont().deriveFont(14.0f));
+
+
 		// Initialize
 		init();
 	}
@@ -129,7 +129,7 @@ public class JTT extends JFrame {
 		for (int i = 0; i < 9; i++) {
 			char ch = (char) ('0' + i + 1);
 			cells[i].setText("" + ch);
-      cells[i].setIcon(neutralIcon);
+			cells[i].setIcon(neutralIcon);
 		}
 
 		// Initialize result label
@@ -460,7 +460,7 @@ public class JTT extends JFrame {
 			noughts = true;
 		} else if (inputValue.equals("C") || inputValue.equals("c")) {
 			noughts = false;
-      compMove();
+			compMove();
 		} else {
 			JOptionPane.showMessageDialog(null,
 					"Invalid input. Please try again.", "alert",
@@ -498,7 +498,7 @@ public class JTT extends JFrame {
 				pressed.setIcon(noughtIcon);
 			} else {
 				pressed.setText("X");
-        pressed.setIcon(crossIcon);
+				pressed.setIcon(crossIcon);
 			}
 
 			// Check winner
@@ -521,12 +521,12 @@ public class JTT extends JFrame {
 				} else {
 					if (noughts) {
 						// result.setText("USER WIN");
-            userGun.setVisible(true);
-            cpuGun.setVisible(false);
+						userGun.setVisible(true);
+						cpuGun.setVisible(false);
 					} else {
 						// result.setText("CPU WIN");
-            userGun.setVisible(false);
-            cpuGun.setVisible(true);
+						userGun.setVisible(false);
+						cpuGun.setVisible(true);
 					}
 				}
 			} else {
